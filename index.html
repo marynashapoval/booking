@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-5">
+                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 colomn-input">
+                    <label class="form-location_header">Место или название отеля</label>
+                    <i class="fa fa-map-marker fa-lg" aria-hidden="true">
+                        <input type="text" placeholder="Введите здесь место" class="place-input form-control-lg">
+                    </i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 colomn-input">
+                    <label class="form-date_header">Заезд</label>
+                    <i class="fa fa-calendar fa-lg" aria-hidden="true">
+                        <input type="text" class="start-date date form-control-lg">
+                        <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+                    </i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-2 col-xl-2 colomn-input">
+                    <label class="form-date_header">Выезд</label>
+                    <i class="fa fa-calendar fa-lg" aria-hidden="true">
+                        <input type="text" class="end-date date form-control-lg">
+                        <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i>
+                    </i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1 colomn-input">
+                    <label class="form-amount_room_header">Номера</label>
+                    <input type="text" id="rooms" class="counter form-control-sm" placeholder="0">
+                    <i class="fa fa-caret-up fa-lg" onclick="addRoom()" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down fa-lg" onclick="minusRoom()" aria-hidden="true"></i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1 colomn-input">
+                    <label class="form-amount_adult_header">Взрослые</label>
+                    <input type="text" id="adults" class="counter form-control-sm" placeholder="0">
+                    <i class="fa fa-caret-up fa-lg" onclick="addAdult()" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down fa-lg" onclick="minusAdult()" aria-hidden="true"></i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1 colomn-input">
+                    <label class="form-amount_children_header">Дети</label>
+                    <input type="text" id="children" class="counter form-control-sm" placeholder="0">
+                    <i class="fa fa-caret-up fa-lg" onclick="addChildren()" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down fa-lg" onclick="minusChildren()" aria-hidden="true"></i>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1 colomn-input">
+                    <button class="plus-button"><i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i></button>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-1 col-xl-1 colomn-input">
+                    <input class="btn btn-lg" id="find-button" type="button" value="Найти">
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.id.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $('.date').datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            toggleActive: true,
+            showDropdowns: true,
+            format: 'dd MM',
+        }).on('changeDate', function (selected) {
+            updateDate($(this).closest('form').find('.date'), selected);
+        });
+
+        function updateDate(inputs, selected) {
+            let minDate = new Date(selected.date.valueOf());
+            $(inputs[1]).datepicker('setStartDate', minDate);
+            $(inputs[0]).datepicker('setEndDate', minDate);
+        }
+
+        // $(function () {
+        //     $('#datepicker').datepicker($.extend({
+        //         inline: true,
+        //         changeYear: true,
+        //         changeMonth: true,
+        //     },
+        //      $.datepicker.regional['ru']
+        //    ));
+        // });
+    </script>
+</body>
+
+</html>

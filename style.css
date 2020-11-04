@@ -1,0 +1,63 @@
+.place-input,
+.start-date,
+.end-date {
+    font-style: italic;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+label {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.fa {
+    flex-direction: row;
+    color: #fdaf37;
+}
+
+.fa-angle-down {
+    float: right;
+    z-index: 2;
+    position: relative;
+}
+
+.fa-caret-down,
+.fa-angle-down {
+    color: gray;
+}
+
+.fa-plus-circle {
+    color: #fed18b;
+}
+
+.colomn-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.counter {
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 0px !important;
+    width: 30%;
+    height: 30%;
+    outline: none;
+}
+
+.btn {
+    background-color: #fdaf37;
+    color: #ffffff;
+    border-radius: 3px !important;
+    text-transform: uppercase;
+    font-weight: bold !important;
+    padding: 10% 20% !important;
+}
+
+.plus-button,
+.plus-button:focus {
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+}
